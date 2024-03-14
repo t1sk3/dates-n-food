@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { SupabaseService } from '../services/supabase.service';
 
+import { MatDialog } from '@angular/material/dialog';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -14,7 +16,8 @@ export class LoginComponent {
 
   constructor(
     private fb: FormBuilder,
-    private supabaseService: SupabaseService
+    private supabaseService: SupabaseService,
+    private dialog: MatDialog
   ) { }
 
   loginForm = this.fb.group({
@@ -25,7 +28,6 @@ export class LoginComponent {
   onSubmit() {
     const { email, password } = this.loginForm.value;
     if (this.loginForm.valid && email && password) {
-      console.log('Logging in with email:', email, 'and password:', password)
       this.supabaseService.signIn(email, password);
     } else {
       this.loginError = 'Please enter a valid email and password';
