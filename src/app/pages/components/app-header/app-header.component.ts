@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { SupabaseService } from '../../../services/supabase.service';
 
 @Component({
@@ -10,6 +11,7 @@ export class AppHeaderComponent {
 
   constructor(
     private supabaseService: SupabaseService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -21,5 +23,6 @@ export class AppHeaderComponent {
 
   logout() {
     this.supabaseService.signOut()
+    this.router.navigate(['/'])
   }
 }
