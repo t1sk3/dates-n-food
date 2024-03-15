@@ -32,4 +32,16 @@ export class SupabaseService {
   authChanges(callback: (event: AuthChangeEvent, session: Session | null) => void) {
     return this.supabase.auth.onAuthStateChange(callback)
   }
+
+  async getDates() {
+    const { data, error } = await this.supabase.from('dates').select('*')
+    if (error) {
+      console.log('error', error)
+    }
+    return data
+  }
+
+  getUser() {
+    return this.supabase.auth.getUser();
+  }
 }

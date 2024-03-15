@@ -10,13 +10,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
-import { MainComponent } from './pages/main/main.component';
+import { DatesComponent } from './pages/dates/dates.component';
+import { AppHeaderComponent } from './pages/components/app-header/app-header.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    MainComponent
+    DatesComponent,
+    AppHeaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,7 +30,9 @@ import { MainComponent } from './pages/main/main.component';
     MatFormFieldModule,
     MatDialogModule,
     MatInputModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatIconModule,
+    MatMenuModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

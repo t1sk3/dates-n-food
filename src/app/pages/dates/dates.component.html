@@ -1,0 +1,24 @@
+<app-app-header></app-app-header>
+<div class="dates">
+    <div class="date" *ngFor="let item of data">
+        <div class="date__header">
+            <div class="date__header__title">
+                <h2>{{ item.title }}</h2>
+            </div>
+        </div>
+        <div class="date__content">
+            <div class="date__content__description">
+                <p>{{ item.description }}</p>
+            </div>
+            <div class="div__content__costly">
+                <span *ngFor="let i of [1, 2, 3, 4, 5]" [ngClass]="{'active': i <= item.costly, 'inactive': i > item.costly}">€</span>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="!loaded">
+    <p>Loading...</p>
+</div>
+<div *ngIf="!data || data.length === 0 && loaded">
+    <p>No dates available.</p>
+</div>
