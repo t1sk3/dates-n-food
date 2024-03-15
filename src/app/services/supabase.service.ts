@@ -17,16 +17,16 @@ export class SupabaseService {
 
   constructor() { }
 
-  signIn(email: string, password: string) {
-    console.log('Signing in with email:', email, 'and password:', password);
+  async signIn(email: string, password: string) {
+    return this.supabase.auth.signInWithPassword({ email, password });
   }
 
   signUp(email: string, password: string) {
-    console.log('Signing up with email:', email, 'and password:', password);
+    return this.supabase.auth.signUp({ email, password });
   }
 
   signOut() {
-    console.log('Signing out');
+    return this.supabase.auth.signOut()
   }
 
   authChanges(callback: (event: AuthChangeEvent, session: Session | null) => void) {
