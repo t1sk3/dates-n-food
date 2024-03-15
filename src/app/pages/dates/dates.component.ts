@@ -14,9 +14,7 @@ export class DatesComponent {
   ) { }
 
   async ngOnInit() {
-    console.log('getting dates')
     this.data = await this.supabaseService.getDates()
-    console.log('data', this.data)
     this.loaded = true
   }
 }
