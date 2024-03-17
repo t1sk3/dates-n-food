@@ -18,9 +18,9 @@ export class AddFoodDialogComponent {
     ) {
     this.foodForm = this.fb.group({
       title: ['', Validators.required],
-      time_span: ['', Validators.required],
+      time_span: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
       price: ['', Validators.required],
-      link: ['', Validators.required],
+      link: [''],
     });
   }
 
@@ -29,7 +29,7 @@ export class AddFoodDialogComponent {
   }
 
   onSubmit(): void {
-    if (!this.foodForm.invalid) {
+    if (this.foodForm.valid) {
       this.supabaseService.createDish(this.foodForm.value);
     }
     // reload data

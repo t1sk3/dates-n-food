@@ -1,10 +1,10 @@
 <h2 class="add-food-title">Add a food idea</h2>
 <form class="add-food-form" [formGroup]="foodForm" (ngSubmit)="onSubmit()">
     <mat-form-field>
-      <input matInput placeholder="Title" formControlName="title">
+      <input matInput placeholder="Title*" formControlName="title">
     </mat-form-field>
     <mat-form-field>
-        <input matInput placeholder="Time needed" formControlName="description">
+        <input type="number" matInput placeholder="Time needed*" formControlName="time_span">
     </mat-form-field>
     <mat-form-field>
         <input matInput placeholder="Link to recipe" formControlName="link">
