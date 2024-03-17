@@ -1,0 +1,21 @@
+<h2 class="add-food-title">Add a food idea</h2>
+<form class="add-food-form" [formGroup]="foodForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <input matInput placeholder="Title" formControlName="title">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Time needed" formControlName="description">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Link to recipe" formControlName="link">
+    </mat-form-field>
+    <div class="price-input">
+        <span (click)="setPrice(0)" [ngClass]="{'active': 0 === foodForm.value.price, 'inactive': 0 < foodForm.value.price}">0</span>
+        <span> - </span>
+        <span *ngFor="let i of [1, 2, 3, 4, 5]" (click)="setPrice(i)" [ngClass]="{'active': i <= foodForm.value.price, 'inactive': i > foodForm.value.price}">€</span>
+    </div>
+    <div class="add-food-buttons">
+        <button mat-raised-button color="primary" type="submit" [disabled]="!foodForm.valid">Add</button>
+        <button mat-raised-button color="warn" (click)="onCancel()">Cancel</button>
+    </div>
+  </form>

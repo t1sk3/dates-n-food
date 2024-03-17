@@ -68,4 +68,20 @@ export class SupabaseService {
     }
     return data
   }
+
+  async createDish(dish: any) {
+    const { data, error } = await this.supabase.from('dishes').insert(dish)
+    if (error) {
+      console.log('error', error)
+    }
+    return data
+  }
+
+  async updateDish(dish: any) {
+    const { data, error } = await this.supabase.from('dishes').update(dish).eq('id', dish.id)
+    if (error) {
+      console.log('error', error)
+    }
+    return data
+  }
 }

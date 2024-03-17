@@ -1,12 +1,17 @@
+.foods-wrapper
+  width: 60%
+  padding: 20px
+  background-color: #f5f5f5
+    
 .foods
     display: flex
     flex-direction: row
     flex-wrap: wrap
     align-items: left
     justify-content: center
-    background-color: #f5f5f5
+    
     padding: 20px
-    width: 80%
+    width: 100%
     justify-self: center
     align-self: center
     border-radius: 5px
@@ -15,6 +20,7 @@
         flex-direction: column
         justify-content: space-between 
         width: 20%
+        min-width: 200px
         margin: 10px
         padding: 10px
         border: 1px solid #ccc
@@ -39,9 +45,27 @@
     flex-direction: row
     margin-top: 10px
 
+.date-interactions
+    display: flex
+    flex-direction: row
+    justify-content: space-between
+    margin-top: 10px
+
+
+.extra-info
+    display: flex
+    flex-direction: row
+    justify-content: space-between
+    margin-top: 10px
+
 .active
   color: black
 
 .inactive
   color: #ccc
+
+.checked
+  color: green
+  font-weight: bold
+  font-size: 24px
     

@@ -1,24 +1,40 @@
 <app-app-header></app-app-header>
-<div class="foods">
-    <div class="food" *ngFor="let item of data">
-        <div class="food__header">
-            <div class="food__header__title">
-                <h2>{{ item.title }}</h2>
-            </div>
-        </div>
-        <div class="food__content">
-            <div class="time">
-                <mat-icon>access_time</mat-icon> <!-- Add clock icon -->
-                <p>{{ item.time_span }} min</p>
-            </div>
-            <div class="info">
-                <div class="div__content__costly">
-                    <span *ngFor="let i of [1, 2, 3, 4, 5]" [ngClass]="{'active': i <= item.price, 'inactive': i > item.price}">€</span>
+<div class="foods-wrapper">
+    <div class="date-interactions">
+        <mat-toolbar>
+            <mat-form-field>
+            <mat-label>Sort by</mat-label>
+            <mat-select (selectionChange)="sortData($event.value)">
+                <mat-option value="title">Title</mat-option>
+                <mat-option value="done">Time</mat-option>
+                <mat-option value="costly">Price</mat-option>
+            </mat-select>
+            </mat-form-field>
+        </mat-toolbar>
+      <button mat-fab color="primary" (click)="openDialog()"><mat-icon>add</mat-icon></button>
+    </div>
+
+    <div class="foods">
+        <div class="food" *ngFor="let item of data">
+            <div class="food__header">
+                <div class="food__header__title">
+                    <h2>{{ item.title }}</h2>
                 </div>
-                <div class="div__content__recipe">
-                    <a *ngIf="item.link" href="{{ item.link }}" target="_blank">
-                        <mat-icon>launch</mat-icon>
-                    </a>
+            </div>
+            <div class="food__content">
+                <div class="time">
+                    <mat-icon>access_time</mat-icon> <!-- Add clock icon -->
+                    <p>{{ item.time_span }} min</p>
+                </div>
+                <div class="info">
+                    <div class="div__content__costly">
+                        <span *ngFor="let i of [1, 2, 3, 4, 5]" [ngClass]="{'active': i <= item.price, 'inactive': i > item.price}">€</span>
+                    </div>
+                    <div class="div__content__recipe">
+                        <a *ngIf="item.link" href="{{ item.link }}" target="_blank">
+                            <mat-icon>launch</mat-icon>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
