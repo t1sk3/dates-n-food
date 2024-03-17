@@ -41,7 +41,31 @@ export class SupabaseService {
     return data
   }
 
+  async createDate(date: any) {
+    const { data, error } = await this.supabase.from('dates').insert(date)
+    if (error) {
+      console.log('error', error)
+    }
+    return data
+  }
+
+  async updateDate(date: any) {
+    const { data, error } = await this.supabase.from('dates').update(date).eq('id', date.id)
+    if (error) {
+      console.log('error', error)
+    }
+    return data
+  }
+
   getUser() {
     return this.supabase.auth.getUser();
+  }
+
+  async getDishes() {
+    const { data, error } = await this.supabase.from('dishes').select('*')
+    if (error) {
+      console.log('error', error)
+    }
+    return data
   }
 }

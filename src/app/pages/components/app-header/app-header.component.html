@@ -2,22 +2,14 @@
     <nav class="nav-drawer">
         <ul>
             <li class="dropdown">
-                <a href="#">Dates</a>
-                <div class="dropdown-content">
-                    <a href="/dates">View Dates</a>
-                    <a href="/add-date">Add Date</a>
-                </div>
+                <a href="/dates">Dates</a>
             </li>
             <li class="dropdown">
-                <a href="#">Food</a>
-                <div class="dropdown-content">
-                    <a href="/food">View Food</a>
-                    <a href="/add-food">Add Food</a>
-                </div>
+                <a href="/food">Food</a>
             </li>
         </ul>
         <button mat-icon-button [matMenuTriggerFor]="menu">
-            <mat-icon fontIcon="account_circle"></mat-icon>
+            <mat-icon>account_circle</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
             <button mat-menu-item (click)="logout()">

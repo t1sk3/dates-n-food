@@ -14,6 +14,11 @@ import { DatesComponent } from './pages/dates/dates.component';
 import { AppHeaderComponent } from './pages/components/app-header/app-header.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatButtonModule } from '@angular/material/button';
+import { FoodComponent } from './pages/food/food.component';
+import { AddDateDialogComponent } from './pages/dates/add-date-dialog/add-date-dialog.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -21,6 +26,8 @@ import { MatMenuModule } from '@angular/material/menu';
     LoginComponent,
     DatesComponent,
     AppHeaderComponent,
+    FoodComponent,
+    AddDateDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,6 +40,9 @@ import { MatMenuModule } from '@angular/material/menu';
     BrowserAnimationsModule,
     MatIconModule,
     MatMenuModule,
+    MatButtonModule,
+    MatToolbarModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

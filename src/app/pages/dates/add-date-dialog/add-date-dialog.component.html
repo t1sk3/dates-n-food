@@ -1,0 +1,18 @@
+<h2 class="add-date-title">Add a date idea</h2>
+<form class="add-date-form" [formGroup]="dateForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <input matInput placeholder="Title" formControlName="title">
+    </mat-form-field>
+    <mat-form-field>
+        <textarea matInput placeholder="Description" formControlName="description"></textarea>
+    </mat-form-field>
+    <div class="price-input">
+        <span (click)="setPrice(0)" [ngClass]="{'active': 0 === dateForm.value.price, 'inactive': 0 < dateForm.value.price}">0</span>
+        <span> - </span>
+        <span *ngFor="let i of [1, 2, 3, 4, 5]" (click)="setPrice(i)" [ngClass]="{'active': i <= dateForm.value.price, 'inactive': i > dateForm.value.price}">€</span>
+    </div>
+    <div class="add-date-buttons">
+        <button mat-raised-button color="primary" type="submit" [disabled]="!dateForm.valid">Add</button>
+        <button mat-raised-button color="warn" (click)="onCancel()">Cancel</button>
+    </div>
+  </form>
