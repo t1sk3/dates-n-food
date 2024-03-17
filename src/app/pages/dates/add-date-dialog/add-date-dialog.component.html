@@ -4,7 +4,7 @@
       <input matInput placeholder="Title" formControlName="title">
     </mat-form-field>
     <mat-form-field>
-        <textarea matInput placeholder="Description" formControlName="description"></textarea>
+        <textarea matInput cdkTextareaAutosize placeholder="Description" formControlName="description"></textarea>
     </mat-form-field>
     <div class="price-input">
         <span (click)="setPrice(0)" [ngClass]="{'active': 0 === dateForm.value.costly, 'inactive': 0 < dateForm.value.costly}">0</span>
