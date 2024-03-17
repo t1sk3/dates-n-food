@@ -43,6 +43,6 @@
 <div *ngIf="!loaded">
     <p>Loading...</p>
 </div>
-<div *ngIf="!data || data.length === 0 && loaded">
+<div *ngIf="(!data || data.length === 0) && loaded">
     <p>No dates available.</p>
 </div>

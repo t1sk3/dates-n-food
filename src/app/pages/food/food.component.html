@@ -27,6 +27,6 @@
 <div *ngIf="!loaded">
     <p>Loading...</p>
 </div>
-<div *ngIf="!data || data.length === 0 && loaded">
-    <p>No foods available.</p>
+<div *ngIf="(!data || data.length === 0) && loaded">
+    <p>No dishes available.</p>
 </div>
