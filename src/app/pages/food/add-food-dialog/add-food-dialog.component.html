@@ -12,7 +12,7 @@
     <div class="price-input">
         <span (click)="setPrice(0)" [ngClass]="{'active': 0 === foodForm.value.price, 'inactive': 0 < foodForm.value.price}">0</span>
         <span> - </span>
-        <span *ngFor="let i of [1, 2, 3, 4, 5]" (click)="setPrice(i)" [ngClass]="{'active': i <= foodForm.value.price, 'inactive': i > foodForm.value.price}">€</span>
+        <span *ngFor="let i of [1, 2, 3, 4, 5]" (click)="setPrice(i)" [ngClass]="{'active': i <= foodForm.value.price, 'inactive': i > foodForm.value.price}" [id]="'price-' + i" (mouseover)="onHover(i)" (mouseleave)="onLeave(i)">€</span>
     </div>
     <div class="add-food-buttons">
         <button mat-raised-button color="primary" type="submit" [disabled]="!foodForm.valid">Add</button>

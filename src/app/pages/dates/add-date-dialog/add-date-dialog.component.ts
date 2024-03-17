@@ -45,4 +45,23 @@ export class AddDateDialogComponent implements OnInit {
     this.dateForm.reset();
     this.dialogRef.close();
   }
+
+  onHover(index: number): void {
+    // range over 0 - index
+    for (let i = 0; i <= index; i++) {
+      const span = document.getElementById(`price-${i}`);
+      span?.classList.remove('inactive');
+      span?.classList.add('hover');
+      console.log(span);
+    }
+  }
+
+  onLeave(index: number): void {
+    // range over 0 - index
+    for (let i = 0; i <= index; i++) {
+      const span = document.getElementById(`price-${i}`);
+      span?.classList.add('inactive');
+      span?.classList.remove('hover');
+    }
+  }
 }
