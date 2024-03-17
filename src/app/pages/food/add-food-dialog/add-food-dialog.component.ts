@@ -46,9 +46,9 @@ export class AddFoodDialogComponent {
     // range over 0 - index
     for (let i = 0; i <= index; i++) {
       const span = document.getElementById(`price-${i}`);
-      span?.classList.remove('inactive');
-      span?.classList.add('hover');
-      console.log(span);
+      if (span) {
+        span.style.color = 'black';
+      }
     }
   }
 
@@ -56,7 +56,9 @@ export class AddFoodDialogComponent {
     // range over 0 - index
     for (let i = 0; i <= index; i++) {
       const span = document.getElementById(`price-${i}`);
-      span?.classList.add('inactive');
+      if (span) {
+        span.style.color = '';
+      }
       span?.classList.remove('hover');
     }
   }

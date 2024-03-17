@@ -25,6 +25,8 @@ export class AddDateDialogComponent implements OnInit {
 
   setPrice(price: number): void {
     this.dateForm.get('costly')?.setValue(price);
+    console.log(price);
+    console.log(this.dateForm.get('costly')?.value);
   }
 
   ngOnInit(): void {
@@ -50,9 +52,9 @@ export class AddDateDialogComponent implements OnInit {
     // range over 0 - index
     for (let i = 0; i <= index; i++) {
       const span = document.getElementById(`price-${i}`);
-      span?.classList.remove('inactive');
-      span?.classList.add('hover');
-      console.log(span);
+      if (span) {
+        span.style.color = 'black';
+      }
     }
   }
 
@@ -60,7 +62,9 @@ export class AddDateDialogComponent implements OnInit {
     // range over 0 - index
     for (let i = 0; i <= index; i++) {
       const span = document.getElementById(`price-${i}`);
-      span?.classList.add('inactive');
+      if (span) {
+        span.style.color = '';
+      }
       span?.classList.remove('hover');
     }
   }
