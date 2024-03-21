@@ -28,7 +28,7 @@
                 </div>
                 <div class="info">
                     <div class="div__content__costly">
-                        <span *ngFor="let i of [1, 2, 3, 4, 5]" [ngClass]="{'active': i <= item.price, 'inactive': i > item.price}">€</span>
+                        <span *ngFor="let i of [1, 2, 3, 4, 5]" [ngClass]="{'active': i <= item.price, 'inactive': i > item.price}">*</span>
                     </div>
                     <div class="div__content__recipe">
                         <a *ngIf="item.link" href="{{ item.link }}" target="_blank">
