@@ -20,6 +20,7 @@ import { AddDateDialogComponent } from './pages/dates/add-date-dialog/add-date-d
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSelectModule } from '@angular/material/select';
 import { AddFoodDialogComponent } from './pages/food/add-food-dialog/add-food-dialog.component';
+import { EditDateDialogComponent } from './pages/dates/edit-date-dialog/edit-date-dialog.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { AddFoodDialogComponent } from './pages/food/add-food-dialog/add-food-di
     FoodComponent,
     AddDateDialogComponent,
     AddFoodDialogComponent,
+    EditDateDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,7 +46,7 @@ import { AddFoodDialogComponent } from './pages/food/add-food-dialog/add-food-di
     MatMenuModule,
     MatButtonModule,
     MatToolbarModule,
-    MatSelectModule
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

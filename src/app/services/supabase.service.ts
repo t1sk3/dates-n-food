@@ -49,6 +49,14 @@ export class SupabaseService {
     return data
   }
 
+  async editDate(date: any) {
+    const { data, error } = await this.supabase.from('dates').update(date).eq('id', date.id)
+    if (error) {
+      console.log('error', error)
+    }
+    return data
+  }
+
   async updateDate(date: any) {
     const { data, error } = await this.supabase.from('dates').update(date).eq('id', date.id)
     if (error) {

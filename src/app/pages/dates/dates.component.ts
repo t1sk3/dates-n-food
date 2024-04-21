@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { SupabaseService } from '../../services/supabase.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AddDateDialogComponent } from './add-date-dialog/add-date-dialog.component';
+import { EditDateDialogComponent } from './edit-date-dialog/edit-date-dialog.component';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 
 @Component({
@@ -59,5 +60,16 @@ export class DatesComponent {
         this.loaded = false
         this.ngOnInit()
     });
-}
+  }
+
+  openEditDialog(date: any): void {
+    const dialogRef = this.dialog.open(EditDateDialogComponent, {
+      data: date
+    });
+
+    dialogRef.afterClosed().subscribe(async result => {
+      this.loaded = false
+      this.ngOnInit()
+    });
+  }
 }
