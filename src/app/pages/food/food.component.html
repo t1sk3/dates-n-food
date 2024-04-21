@@ -14,7 +14,7 @@
       <button mat-fab color="primary" (click)="openDialog()"><mat-icon>add</mat-icon></button>
     </div>
 
-    <div class="foods">
+    <div class="foods" *ngIf="data.length > 0; else noData">
         <div class="food" *ngFor="let item of data">
             <div class="food__header">
                 <div class="food__header__title">
@@ -39,6 +39,9 @@
             </div>
         </div>
     </div>
+    <ng-template #noData>
+        <p>The database is in hibernation. Please contact the administrator of this website to re-enable it.</p>
+    </ng-template>
 </div>
 <div *ngIf="!loaded">
     <p>Loading...</p>
