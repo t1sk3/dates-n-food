@@ -1,1 +1,13 @@
-<p>add-tv-dialog works!</p>
+<h2 class="add-date-title" *ngIf="isMoviePage; else elseBlock">Add a movie</h2>
+<ng-template #elseBlock>
+  <h2 class="add-date-title">Add a TV-series</h2>
+</ng-template>
+<form class="add-date-form" [formGroup]="dateForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <input matInput placeholder="Title" formControlName="title">
+    </mat-form-field>
+    <div class="add-date-buttons">
+        <button mat-raised-button color="primary" type="submit" [disabled]="!dateForm.valid">Add</button>
+        <button mat-raised-button color="warn" (click)="onCancel()">Cancel</button>
+    </div>
+  </form>

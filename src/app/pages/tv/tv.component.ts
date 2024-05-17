@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { SupabaseService } from '../../services/supabase.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AddTvDialogComponent } from './add-tv-dialog/add-tv-dialog.component';
-import { EditTvDialogComponent } from './edit-tv-dialog/edit-tv-dialog.component';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { environment } from '../../environments/environment';
 
@@ -65,7 +64,10 @@ export class TvComponent {
   }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(AddTvDialogComponent);
+    const dialogRef = this.dialog.open(AddTvDialogComponent, {
+      data: { isMovie: this.isMoviePage }
+    
+    });
 
     dialogRef.afterClosed().subscribe(async result => {
         this.loaded = false
@@ -77,16 +79,5 @@ export class TvComponent {
     let imdbId = tvData.imdb_id;
     
     return `url('https://img.omdbapi.com/?apikey=${environment.OMDB_API_KEY}&i=${imdbId}&h=600')`
-  }
-
-  openEditDialog(tvData: any): void {
-    const dialogRef = this.dialog.open(EditTvDialogComponent, {
-      data: tvData
-    });
-
-    dialogRef.afterClosed().subscribe(async result => {
-      this.loaded = false
-      this.ngOnInit()
-    });
   }
 }

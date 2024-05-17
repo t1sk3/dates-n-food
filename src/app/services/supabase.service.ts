@@ -110,8 +110,24 @@ export class SupabaseService {
     return data
   }
 
+  async createMovie(movie: any) {
+    const { data, error } = await this.supabase.from('movies').insert(movie)
+    if (error) {
+      console.log('error', error)
+    }
+    return data
+  }
+
   async getSeries() {
     const { data, error } = await this.supabase.from('series').select('*')
+    if (error) {
+      console.log('error', error)
+    }
+    return data
+  }
+
+  async createSeries(series: any) {
+    const { data, error } = await this.supabase.from('series').insert(series)
     if (error) {
       console.log('error', error)
     }
