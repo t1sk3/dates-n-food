@@ -4,6 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { DatesComponent } from './pages/dates/dates.component';
 import { authGuard } from './services/guards/auth.guard';
 import { FoodComponent } from './pages/food/food.component';
+import { TvComponent } from './pages/tv/tv.component';
 
 const routes: Routes = [
   {
@@ -19,6 +20,18 @@ const routes: Routes = [
     path: 'food',
     component: FoodComponent,
     canActivate: [authGuard]
+  },
+  {
+    path: 'movies',
+    component: TvComponent,
+  },
+  {
+    path: 'series',
+    component: TvComponent,
+  },
+  {
+    path: '**',
+    redirectTo: ''
   }
 ];
 

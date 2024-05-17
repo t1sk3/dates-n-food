@@ -65,6 +65,15 @@ export class SupabaseService {
     return data
   }
 
+  async updateTv(tv: any, isMovie: boolean) {
+    const { data, error } = await this.supabase.from(isMovie ? 'movies' : 'series').update(tv).eq('id', tv.id)
+    if (error) {
+      console.log('error', error)
+    }
+    return data
+
+  }
+
   getUser() {
     return this.supabase.auth.getUser();
   }
@@ -87,6 +96,22 @@ export class SupabaseService {
 
   async updateDish(dish: any) {
     const { data, error } = await this.supabase.from('dishes').update(dish).eq('id', dish.id)
+    if (error) {
+      console.log('error', error)
+    }
+    return data
+  }
+
+  async getMovies() {
+    const { data, error } = await this.supabase.from('movies').select('*')
+    if (error) {
+      console.log('error', error)
+    }
+    return data
+  }
+
+  async getSeries() {
+    const { data, error } = await this.supabase.from('series').select('*')
     if (error) {
       console.log('error', error)
     }

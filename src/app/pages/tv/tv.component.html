@@ -1,0 +1,59 @@
+<app-app-header></app-app-header>
+
+<div class="dates-wrapper">
+    <div class="date-interactions">
+        <mat-toolbar>
+            <mat-form-field>
+            <mat-label>Sort by</mat-label>
+            <mat-select (selectionChange)="sortData($event.value)">
+                <mat-option value="title">Title</mat-option>
+                <mat-option value="seen">Seen</mat-option>
+                <mat-option value="liked">Liked</mat-option>
+            </mat-select>
+            </mat-form-field>
+        </mat-toolbar>
+      <button mat-fab color="primary" (click)="openDialog()"><mat-icon>add</mat-icon></button>
+    </div>
+    
+    <div class="dates" *ngIf="data.length > 0; else noData">
+        <div class="date" #itemDiv *ngFor="let item of data" [style.backgroundImage]="getBackgroundImage(item)">
+            <div class="date__header">
+                <div class="date__header__title">
+                    <h2>{{ item.title }}</h2>
+                </div>
+                <button mat-icon-button (click)="openEditDialog(item)" class="edit-button">
+                    <mat-icon>edit</mat-icon>
+                </button>
+            </div>
+            <div class="date__content">
+                <div class="date__content__description">
+                    <p>{{ item.description }}</p>
+                </div>
+                <div class="extra-info">
+                    <div class="date__content__status">
+                        <mat-icon [@changeState]="item.seen ? 'expand_circle_down' : 'radio_button_unchecked'" (click)="toggleSeen(item)" [ngClass]="{'checked': item.seen}">
+                            {{item.seen ? 'expand_circle_down' : 'radio_button_unchecked'}}
+                          </mat-icon>
+                    </div>
+                    <div class="date__content__liked">
+                        <mat-icon (click)="toggleLike(item)" [ngClass]="{'liked': item.liked}">
+                            {{item.liked ? 'favorite' : 'favorite_border'}}
+                        </mat-icon>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ng-template #noData>
+        <p>The database is in hibernation. Please contact the administrator of this website to re-enable it.</p>
+    </ng-template>
+</div>
+<div *ngIf="!loaded">
+    <p>Loading...</p>
+</div>
+<div *ngIf="(!data || data.length === 0) && loaded">
+    <p *ngIf="isMoviePage; else elseBlock">No movies available.</p>
+    <ng-template #elseBlock>
+        <p>No TV-series available.</p>
+    </ng-template>
+</div>
