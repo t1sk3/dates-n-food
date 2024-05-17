@@ -80,4 +80,10 @@ export class TvComponent {
     
     return `url('https://img.omdbapi.com/?apikey=${environment.OMDB_API_KEY}&i=${imdbId}&h=600')`
   }
+
+  deleteTv(tvData: any) {
+    this.supabaseService.deleteTv(tvData, this.isMoviePage)
+    this.loaded = false
+    this.ngOnInit()
+  }
 }

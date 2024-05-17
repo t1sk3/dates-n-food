@@ -133,4 +133,12 @@ export class SupabaseService {
     }
     return data
   }
+
+  async deleteTv(tv: any, isMovie: boolean) {
+    const { data, error } = await this.supabase.from(isMovie ? 'movies' : 'series').delete().eq('id', tv.id)
+    if (error) {
+      console.log('error', error)
+    }
+    return data
+  }
 }
