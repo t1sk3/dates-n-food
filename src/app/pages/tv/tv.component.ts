@@ -82,8 +82,10 @@ export class TvComponent {
   }
 
   deleteTv(tvData: any) {
-    this.supabaseService.deleteTv(tvData, this.isMoviePage)
-    this.loaded = false
-    this.ngOnInit()
+    if (confirm('Are you sure you want to delete ' + tvData.title + '?')) {
+      this.supabaseService.deleteTv(tvData, this.isMoviePage);
+      this.loaded = false;
+      this.ngOnInit();
+    }
   }
 }
