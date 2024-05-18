@@ -1,6 +1,9 @@
 <header>
     <nav class="nav-drawer">
-        <ul>
+        <button id="sidenav-button" mat-icon-button (click)="toggleSidenav()">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <ul id="options-list">
             <li class="dropdown">
                 <a class="main-link" href="/dates">Dates</a>
             </li>

@@ -2,7 +2,7 @@
     width: 100%
     display: flex
     justify-content: center
-    align-items: center
+    align-items: flex-start
     ul
         list-style-type: none
         margin: 0
@@ -39,3 +39,17 @@
         a.right-link
             border-top-right-radius: 5px
             border-bottom-right-radius: 5px
+
+    #sidenav-button
+        display: none
+
+// if on mobile
+@media (max-width: 768px)
+    .nav-drawer
+        ul
+            flex-direction: column
+            height: 0
+            opacity: 0
+        
+        #sidenav-button
+            display: block
