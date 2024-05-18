@@ -48,7 +48,7 @@ export class TvComponent {
       }
       return 0;
     });
-    if (sortBy === 'liked' || sortBy === 'seen') {
+    if (sortBy === 'liked') {
       this.data.reverse()
     }
   }
