@@ -17,32 +17,6 @@
     
     <div class="dates" *ngIf="data.length > 0; else noData">
         <app-tv-info *ngFor="let item of data" [item]="item" [style.backgroundImage]="getBackgroundImage(item)"></app-tv-info>
-        <!--
-        <div class="date" #itemDiv *ngFor="let item of data" [style.backgroundImage]="getBackgroundImage(item)">
-            <div class="date__header">
-                <div class="date__header__title">
-                    <h2>{{ item.title }}</h2>
-                </div>
-                <button mat-icon-button (click)="deleteTv(item)" class="delete-button">
-                    <mat-icon>delete</mat-icon>
-                </button>
-            </div>
-            <div class="date__content">
-                <div class="extra-info">
-                    <div class="date__content__status">
-                        <mat-icon [@changeState]="item.seen ? 'expand_circle_down' : 'radio_button_unchecked'" (click)="toggleSeen(item)" [ngClass]="{'checked': item.seen}">
-                            {{item.seen ? 'expand_circle_down' : 'radio_button_unchecked'}}
-                          </mat-icon>
-                    </div>
-                    <div class="date__content__liked">
-                        <mat-icon (click)="toggleLike(item)" [ngClass]="{'liked': item.liked}">
-                            {{item.liked ? 'favorite' : 'favorite_border'}}
-                        </mat-icon>
-                    </div>
-                </div>
-            </div>
-        </div>
-    -->
     </div>
     <ng-template #noData>
         <p>The database is in hibernation. Please contact the administrator of this website to re-enable it.</p>
