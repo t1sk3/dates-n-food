@@ -8,8 +8,8 @@ import { SupabaseService } from '../../../services/supabase.service';
   styleUrl: './app-header.component.sass'
 })
 export class AppHeaderComponent {
-  isAdmin = false;
-  username = null;
+  isAdmin: boolean = false;
+  username: string = '';
 
   constructor(
     private supabaseService: SupabaseService,
@@ -25,6 +25,9 @@ export class AppHeaderComponent {
     if (user) {
       this.isAdmin = user[0].role === 'admin'
       this.username = user[0].username
+      if (this.username === null || this.username === undefined || this.username === '') {
+        this.username = 'no username set';
+      }
     }
   }
 
