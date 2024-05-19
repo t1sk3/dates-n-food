@@ -8,6 +8,7 @@ import { SupabaseService } from '../../../services/supabase.service';
   styleUrl: './app-header.component.sass'
 })
 export class AppHeaderComponent {
+  isAdmin = false
 
   constructor(
     private supabaseService: SupabaseService,
@@ -18,6 +19,11 @@ export class AppHeaderComponent {
     // if screenwidth is less than 768px
     if (window.innerWidth < 768) {
       this.toggleSidenav()
+    }
+    let userInfo = localStorage.getItem('userInfo');
+    let user = userInfo ? JSON.parse(userInfo)[0] : null
+    if (user) {
+      this.isAdmin = user.role === 'admin'
     }
   }
 
@@ -31,6 +37,10 @@ export class AppHeaderComponent {
       list.style.height === '0px' ? list.style.height = 'auto' : list.style.height = '0px';
       list.style.opacity === '0' ? list.style.opacity = '1' : list.style.opacity = '0';
     }
+  }
+
+  toAdmin() {
+    this.router.navigate(['/admin'])
   }
 
   logout() {

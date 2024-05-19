@@ -147,4 +147,12 @@ export class SupabaseService {
     }
     return data
   }
+
+  async getAllUsers() {
+    const {data: { users }, error} = await this.supabase.auth.admin.listUsers();
+    if (error) {
+      console.log('error', error)
+    }
+    return users
+  }
 }

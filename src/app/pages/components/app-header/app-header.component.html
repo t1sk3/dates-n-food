@@ -19,6 +19,10 @@
             <mat-icon>account_circle</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
+            <button *ngIf="isAdmin" mat-menu-item (click)="toAdmin()">
+                <mat-icon fontIcon="settings"></mat-icon>
+                <span>Admin</span>
+            </button>
             <button mat-menu-item (click)="logout()">
                 <mat-icon fontIcon="logout"></mat-icon>
                 <span>Logout</span>
