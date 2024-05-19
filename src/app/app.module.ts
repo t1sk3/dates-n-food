@@ -24,6 +24,9 @@ import { EditDateDialogComponent } from './pages/dates/edit-date-dialog/edit-dat
 import { TvComponent } from './pages/tv/tv.component';
 import { AddTvDialogComponent } from './pages/tv/add-tv-dialog/add-tv-dialog.component';
 import { AdminComponent } from './pages/admin/admin.component';
+import { TvInfoComponent } from './pages/tv/tv-info/tv-info.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
@@ -38,6 +41,7 @@ import { AdminComponent } from './pages/admin/admin.component';
     TvComponent,
     AddTvDialogComponent,
     AdminComponent,
+    TvInfoComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,6 +57,8 @@ import { AdminComponent } from './pages/admin/admin.component';
     MatButtonModule,
     MatToolbarModule,
     MatSelectModule,
+    MatCardModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]
