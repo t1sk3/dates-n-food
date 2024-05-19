@@ -3,8 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { DatesComponent } from './pages/dates/dates.component';
 import { authGuard } from './services/guards/auth.guard';
+import { adminGuard } from './services/guards/admin.guard';
 import { FoodComponent } from './pages/food/food.component';
 import { TvComponent } from './pages/tv/tv.component';
+import { AdminComponent } from './pages/admin/admin.component';
 
 const routes: Routes = [
   {
@@ -24,10 +26,17 @@ const routes: Routes = [
   {
     path: 'movies',
     component: TvComponent,
+    canActivate: [authGuard]
   },
   {
     path: 'series',
     component: TvComponent,
+    canActivate: [authGuard]
+  },
+  {
+    path: 'admin',
+    component: AdminComponent,
+    canActivate: [adminGuard]
   },
   {
     path: '**',

@@ -37,6 +37,7 @@ export class SupabaseService {
     const { data, error } = await this.supabase.from('dates').select('*')
     if (error) {
       console.log('error', error)
+      return null
     }
     return data
   }
@@ -76,6 +77,11 @@ export class SupabaseService {
 
   getUser() {
     return this.supabase.auth.getUser();
+  }
+
+  async getUserInfo() {
+    let user = (await this.supabase.auth.getUser()).data.user
+    return this.supabase.from('users').select('*').eq('uid', user?.id)
   }
 
   async getDishes() {

@@ -32,6 +32,11 @@ export class DatesComponent {
 
   async ngOnInit() {
     this.data = await this.supabaseService.getDates()
+    if (!this.data) {
+      this.loaded = true
+      this.data = [];
+      return
+    }
     this.sortData('title')
     this.loaded = true
   }

@@ -23,6 +23,7 @@ import { AddFoodDialogComponent } from './pages/food/add-food-dialog/add-food-di
 import { EditDateDialogComponent } from './pages/dates/edit-date-dialog/edit-date-dialog.component';
 import { TvComponent } from './pages/tv/tv.component';
 import { AddTvDialogComponent } from './pages/tv/add-tv-dialog/add-tv-dialog.component';
+import { AdminComponent } from './pages/admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { AddTvDialogComponent } from './pages/tv/add-tv-dialog/add-tv-dialog.com
     EditDateDialogComponent,
     TvComponent,
     AddTvDialogComponent,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,

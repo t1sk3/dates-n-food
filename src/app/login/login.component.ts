@@ -31,11 +31,14 @@ export class LoginComponent {
     const { email, password } = this.loginForm.value;
     if (this.loginForm.valid && email && password) {
       const { error } = await this.supabaseService.signIn(email, password);
-      console.log(error);
       if (error) {
         this.loginError = error.message;
       } else {
-        console.log('logged in');
+        let user = await this.supabaseService.getUser()
+        let userInfo = await this.supabaseService.getUserInfo()
+        console.log('user: ', userInfo)
+        localStorage.setItem('user', JSON.stringify(user.data.user))
+        localStorage.setItem('userInfo', JSON.stringify(userInfo.data))
         this.router.navigate(['/dates']);
       }
     } else {

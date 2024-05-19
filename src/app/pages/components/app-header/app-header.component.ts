@@ -34,6 +34,7 @@ export class AppHeaderComponent {
   }
 
   logout() {
+    localStorage.removeItem('user')
     this.supabaseService.signOut()
     this.router.navigate(['/'])
   }
