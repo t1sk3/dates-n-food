@@ -75,13 +75,21 @@ export class SupabaseService {
 
   }
 
-  getUser() {
-    return this.supabase.auth.getUser();
+  async getUser() {
+    const { data, error } = await this.supabase.auth.getUser();
+    if (error) {
+      console.log('error', error)
+    }
+    return data
   }
 
   async getUserInfo() {
-    let user = (await this.supabase.auth.getUser()).data.user
-    return this.supabase.from('users').select('*').eq('uid', user?.id)
+    let user = (await this.supabase.auth.getUser()).data.user;
+    const { data, error } = await this.supabase.from('users').select('*').eq('uid', user?.id);
+    if (error) {
+      console.log('error', error)
+    }
+    return data
   }
 
   async getDishes() {
