@@ -34,11 +34,6 @@ export class LoginComponent {
       if (error) {
         this.loginError = error.message;
       } else {
-        let user = await this.supabaseService.getUser()
-        let userInfo = await this.supabaseService.getUserInfo()
-        console.log('user: ', userInfo)
-        localStorage.setItem('user', JSON.stringify(user.data.user))
-        localStorage.setItem('userInfo', JSON.stringify(userInfo.data))
         this.router.navigate(['/dates']);
       }
     } else {

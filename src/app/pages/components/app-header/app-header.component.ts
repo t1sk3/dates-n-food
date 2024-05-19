@@ -8,22 +8,23 @@ import { SupabaseService } from '../../../services/supabase.service';
   styleUrl: './app-header.component.sass'
 })
 export class AppHeaderComponent {
-  isAdmin = false
+  isAdmin = false;
+  username = null;
 
   constructor(
     private supabaseService: SupabaseService,
     private router: Router
   ) { }
 
-  ngOnInit() {
+  async ngOnInit() {
     // if screenwidth is less than 768px
     if (window.innerWidth < 768) {
       this.toggleSidenav()
     }
-    let userInfo = localStorage.getItem('userInfo');
-    let user = userInfo ? JSON.parse(userInfo)[0] : null
+    let user = await this.supabaseService.getUserInfo();
     if (user) {
-      this.isAdmin = user.role === 'admin'
+      this.isAdmin = user[0].role === 'admin'
+      this.username = user[0].username
     }
   }
 
@@ -44,7 +45,6 @@ export class AppHeaderComponent {
   }
 
   logout() {
-    localStorage.removeItem('user')
     this.supabaseService.signOut()
     this.router.navigate(['/'])
   }
