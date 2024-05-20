@@ -39,10 +39,7 @@ export class TvInfoComponent {
       .then(data => {
         this.info = data;
         if (this.elementRef) {
-          console.log(this.elementRef.nativeElement);
           this.elementRef.nativeElement.style.backgroundImage = `url(${this.getBackgroundImage()})`;
-        } else {
-          console.log('Host element not found');
         }
       });
     this.isMovie = window.location.pathname.includes('movies');
