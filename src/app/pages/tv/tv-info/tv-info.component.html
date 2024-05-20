@@ -9,14 +9,14 @@
   </div>
   <div *ngIf="!isDeleted" class="date__content">
       <div class="date__content__info" [class.invisible]="!isExpanded">
-          <img class="date__content__image" [src]="getBackgroundImage()" >
-          <div class="date__info__expanded">
-              <p>{{ info.Plot }}</p>
-              <p>IMDb Rating: {{ info.imdbRating }}</p>
-              <p>Released: {{ info.Released }}</p>
-              <p>Genre: {{ info.Genre }}</p>
-              <p *ngIf="!isMovie">Seasons: {{ info.totalSeasons }}</p>
-              <p *ngIf="!isMovie">Runtime: {{ info.Runtime }}</p>
+          <img class="date__content__image" [src]="getBackgroundImage()" [class.invisible]="!isExpanded">
+          <div class="date__info__expanded" [class.invisible]="!isExpanded">
+              <p [class.invisible]="!isExpanded">{{ info.Plot }}</p>
+              <p [class.invisible]="!isExpanded">IMDb Rating: {{ info.imdbRating }}</p>
+              <p [class.invisible]="!isExpanded">Released: {{ info.Released }}</p>
+              <p [class.invisible]="!isExpanded">Genre: {{ info.Genre }}</p>
+              <p [class.invisible]="!isExpanded" *ngIf="!isMovie">Seasons: {{ info.totalSeasons }}</p>
+              <p [class.invisible]="!isExpanded" *ngIf="!isMovie">Runtime: {{ info.Runtime }}</p>
           </div>
       </div>
       
