@@ -3,22 +3,30 @@ import { SupabaseService } from '../../services/supabase.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AddDateDialogComponent } from './add-date-dialog/add-date-dialog.component';
 import { EditDateDialogComponent } from './edit-date-dialog/edit-date-dialog.component';
-import { trigger, state, style, animate, transition } from '@angular/animations';
+import { trigger, state, style, animate, transition, keyframes } from '@angular/animations';
 
 @Component({
   selector: 'app-dates',
   templateUrl: './dates.component.html',
   styleUrl: './dates.component.sass',
   animations: [
-    trigger('changeState', [
+    trigger('changeSeen', [
       state('expand_circle_down', style({
         transform: 'scale(1.0)'
       })),
       state('radio_button_unchecked', style({
         transform: 'scale(0.5)'
       })),
-      transition('*=>expand_circle_down', animate('200ms')),
-      transition('*=>radio_button_unchecked', animate('200ms'))
+      transition('*=>expand_circle_down', animate('200ms', keyframes([
+        style({ transform: 'scale(1.0)', offset: 0.5 }),
+        style({ transform: 'scale(1.2)', offset: 0.7 }),
+        style({ transform: 'scale(1.0)', offset: 1.0 })
+      ]))),
+      transition('*=>radio_button_unchecked', animate('200ms', keyframes([
+        style({ transform: 'scale(0.5)', offset: 0.5 }),
+        style({ transform: 'scale(0.3)', offset: 0.7 }),
+        style({ transform: 'scale(0.5)', offset: 1.0 })
+      ])))
     ])
   ]
 })

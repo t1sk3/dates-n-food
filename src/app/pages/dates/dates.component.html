@@ -34,7 +34,7 @@
                         <span *ngFor="let i of [1, 2, 3, 4, 5]" [ngClass]="{'active': i <= item.costly, 'inactive': i > item.costly}">€</span>
                     </div>
                     <div class="date__content__status">
-                        <mat-icon [@changeState]="item.done ? 'expand_circle_down' : 'radio_button_unchecked'" (click)="toggleDone(item)" [ngClass]="{'checked': item.done}">
+                        <mat-icon [@changeSeen]="item.done ? 'expand_circle_down' : 'radio_button_unchecked'" (click)="toggleDone(item)" [ngClass]="{'checked': item.done}">
                             {{item.done ? 'expand_circle_down' : 'radio_button_unchecked'}}
                           </mat-icon>
                     </div>
