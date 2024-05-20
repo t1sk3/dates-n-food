@@ -59,7 +59,7 @@ export class TvInfoComponent {
   ){};
 
   async ngOnInit() {
-    fetch(`https://www.omdbapi.com/?apikey=${environment.OMDB_API_KEY}&i=${this.item.imdb_id}`)
+    fetch(`https://www.omdbapi.com/?apikey=${process.env.OMDB_API_KEY}&i=${this.item.imdb_id}`)
       .then(response => response.json())
       .then(data => {
         this.info = data;
