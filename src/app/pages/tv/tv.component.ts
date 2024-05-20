@@ -75,12 +75,6 @@ export class TvComponent {
     });
   }
 
-  getBackgroundImage(tvData: any): string {
-    let imdbId = tvData.imdb_id;
-    
-    return `url('https://img.omdbapi.com/?apikey=${environment.OMDB_API_KEY}&i=${imdbId}&h=600')`
-  }
-
   deleteTv(tvData: any) {
     if (confirm('Are you sure you want to delete ' + tvData.title + '?')) {
       this.supabaseService.deleteTv(tvData, this.isMoviePage);

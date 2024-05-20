@@ -16,7 +16,7 @@
     </div>
     
     <div class="dates" *ngIf="data.length > 0; else noData">
-        <app-tv-info *ngFor="let item of data" [item]="item" [style.backgroundImage]="getBackgroundImage(item)"></app-tv-info>
+        <app-tv-info *ngFor="let item of data" [item]="item"></app-tv-info>
     </div>
     <ng-template #noData>
         <p>The database is in hibernation. Please contact the administrator of this website to re-enable it.</p>

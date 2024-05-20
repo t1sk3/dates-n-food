@@ -1,7 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ElementRef, HostListener } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { SupabaseService } from '../../../services/supabase.service';
 import { trigger, state, style, animate, transition } from '@angular/animations';
+import { timeout } from 'rxjs';
 
 @Component({
   selector: 'app-tv-info',
@@ -28,13 +29,31 @@ export class TvInfoComponent {
   info: any = null;
 
   constructor(
-    private supabaseService: SupabaseService
+    private supabaseService: SupabaseService,
+    private elementRef: ElementRef
   ){};
 
   async ngOnInit() {
-    let response = await fetch(`https://www.omdbapi.com/?apikey=${environment.OMDB_API_KEY}&i=${this.item.imdbID}')`);
-    this.info = await response.json();
+    fetch(`https://www.omdbapi.com/?apikey=${environment.OMDB_API_KEY}&i=${this.item.imdb_id}`)
+      .then(response => response.json())
+      .then(data => {
+        this.info = data;
+        if (this.elementRef) {
+          console.log(this.elementRef.nativeElement);
+          this.elementRef.nativeElement.style.backgroundImage = `url(${this.getBackgroundImage()})`;
+        } else {
+          console.log('Host element not found');
+        }
+      });
     this.isMovie = window.location.pathname.includes('movies');
+  }
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent) {
+    const clickedInside = this.elementRef.nativeElement.contains(event.target);
+    if (!clickedInside && this.isExpanded) {
+      this.isExpanded = false;
+    }
   }
 
   toggleExpanded() {
@@ -58,9 +77,7 @@ export class TvInfoComponent {
     }
   }
 
-  getBackgroundImage(tvData: any): string {
-    let imdbId = tvData.imdb_id;
-    
-    return `url('https://img.omdbapi.com/?apikey=${environment.OMDB_API_KEY}&i=${imdbId}&h=600')`
+  getBackgroundImage(): string {
+    return this.info.Poster;
   }
 }
