@@ -75,6 +75,9 @@ export class TvInfoComponent {
   }
 
   getBackgroundImage(): string {
+    if (!this.info) {
+      return '';
+    }
     return this.info.Poster;
   }
 }

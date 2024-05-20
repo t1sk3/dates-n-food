@@ -15,7 +15,7 @@
       <button mat-fab color="primary" (click)="openDialog()"><mat-icon>add</mat-icon></button>
     </div>
     
-    <div class="dates" *ngIf="data.length > 0; else noData">
+    <div class="dates" *ngIf="data && data.length > 0; else noData">
         <app-tv-info *ngFor="let item of data" [item]="item"></app-tv-info>
     </div>
     <ng-template #noData>
