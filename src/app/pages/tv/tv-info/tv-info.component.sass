@@ -6,8 +6,6 @@
   top: 50%
   left: 50%
   width: 90vmin
-  max-width: 100vw
-  height: 100vh
   transform: translate(-50%, -50%)
   z-index: 1000
   background: rgba(255, 255, 255, 0.6)
@@ -120,6 +118,10 @@ body.mat-typography.tv-wrapper.expanded::before
     padding: 0
     margin: 0
     border-radius: 5px
+
+  .tv-wrapper.expanded
+    max-width: 100vw
+    height: 100vh
 
   .date__content__info
     display: flex
