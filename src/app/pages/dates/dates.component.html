@@ -48,6 +48,7 @@
 </div>
 <div *ngIf="!loaded">
     <p>Loading...</p>
+    <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
 </div>
 <div *ngIf="(!data || data.length === 0) && loaded">
     <p>No dates available.</p>

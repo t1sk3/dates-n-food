@@ -27,6 +27,7 @@ import { AdminComponent } from './pages/admin/admin.component';
 import { TvInfoComponent } from './pages/tv/tv-info/tv-info.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatToolbarModule,
     MatSelectModule,
     MatCardModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
