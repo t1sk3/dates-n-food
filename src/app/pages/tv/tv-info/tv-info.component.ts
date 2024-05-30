@@ -96,6 +96,9 @@ export class TvInfoComponent {
     if (confirm('Are you sure you want to delete ' + tvData.title + '?')) {
       this.supabaseService.deleteTv(tvData, this.isMovie);
       this.isDeleted = true;
+      let element = document.getElementById(tvData.id)
+      if (element)
+        element.style.display = 'none'
     }
   }
 

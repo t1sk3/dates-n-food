@@ -4,12 +4,12 @@
     <div class="date-interactions">
         <mat-toolbar>
             <mat-form-field>
-            <mat-label>Sort by</mat-label>
-            <mat-select (selectionChange)="sortData($event.value)">
-                <mat-option value="title">Title</mat-option>
-                <mat-option value="done">Done</mat-option>
-                <mat-option value="costly">Price</mat-option>
-            </mat-select>
+                <mat-label>Sort by</mat-label>
+                <mat-select (selectionChange)="sortData($event.value)">
+                    <mat-option value="title">Title</mat-option>
+                    <mat-option value="done">Done</mat-option>
+                    <mat-option value="costly">Price</mat-option>
+                </mat-select>
             </mat-form-field>
         </mat-toolbar>
       <button mat-fab color="primary" (click)="openDialog()"><mat-icon>add</mat-icon></button>
