@@ -1,4 +1,5 @@
-import { Component, Input, ElementRef, HostListener } from '@angular/core';
+import { Component, Input, ElementRef, HostListener, Renderer2, Inject } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 import { environment } from '../../../environments/environment';
 import { SupabaseService } from '../../../services/supabase.service';
 import { trigger, state, style, animate, transition, keyframes } from '@angular/animations';
@@ -55,7 +56,9 @@ export class TvInfoComponent {
 
   constructor(
     private supabaseService: SupabaseService,
-    private elementRef: ElementRef
+    private elementRef: ElementRef,
+    private renderer: Renderer2,
+    @Inject(DOCUMENT) private document: Document
   ){};
 
   async ngOnInit() {
@@ -74,12 +77,13 @@ export class TvInfoComponent {
   onDocumentClick(event: MouseEvent) {
     const clickedInside = this.elementRef.nativeElement.contains(event.target);
     if (!clickedInside && this.isExpanded) {
-      this.isExpanded = false;
+      this.toggleExpanded();
     }
   }
 
   toggleExpanded() {
     this.isExpanded = !this.isExpanded;
+    this.renderer.setStyle(this.document.body, 'overflow', this.isExpanded ? 'hidden' : 'auto');
   }
 
   toggleSeen(tvData: any) {

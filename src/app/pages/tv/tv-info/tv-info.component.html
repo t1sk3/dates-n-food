@@ -3,9 +3,15 @@
       <div class="date__header__title" (click)="toggleExpanded()">
           <h2>{{ item.title }}</h2>
       </div>
-      <button mat-icon-button (click)="deleteTv(item)" class="delete-button">
-          <mat-icon>delete</mat-icon>
-      </button>
+      <div class="buttons-container">
+        <button mat-icon-button (click)="deleteTv(item)" class="delete button">
+            <mat-icon>delete</mat-icon>
+        </button>
+        <button *ngIf="isExpanded" (click)="toggleExpanded()" mat-icon-button class="close button">
+            <mat-icon>close</mat-icon>
+        </button>
+      </div>
+      
   </div>
   <div *ngIf="!isDeleted" class="date__content">
       <div class="date__content__info" [class.invisible]="!isExpanded">
