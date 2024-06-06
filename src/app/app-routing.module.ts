@@ -7,6 +7,7 @@ import { adminGuard } from './services/guards/admin.guard';
 import { FoodComponent } from './pages/food/food.component';
 import { TvComponent } from './pages/tv/tv.component';
 import { AdminComponent } from './pages/admin/admin.component';
+import { QuotesComponent } from './pages/quotes/quotes.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,11 @@ const routes: Routes = [
   {
     path: 'food',
     component: FoodComponent,
+    canActivate: [authGuard]
+  },
+  {
+    path: 'quotes',
+    component: QuotesComponent,
     canActivate: [authGuard]
   },
   {

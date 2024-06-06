@@ -28,6 +28,10 @@ import { TvInfoComponent } from './pages/tv/tv-info/tv-info.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { QuotesComponent } from './pages/quotes/quotes.component';
+import { AddQuoteComponent } from './pages/quotes/add-quote/add-quote.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -43,6 +47,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     AddTvDialogComponent,
     AdminComponent,
     TvInfoComponent,
+    QuotesComponent,
+    AddQuoteComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,7 +66,9 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatSelectModule,
     MatCardModule,
     MatExpansionModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]

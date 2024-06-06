@@ -163,4 +163,39 @@ export class SupabaseService {
     }
     return users
   }
+
+  async getQuotes() {
+    const { data, error } = await this.supabase
+        .from('quotes')
+        .select('*, user:users ( id, username )')
+        .order('date')
+    if (error) {
+      console.log('error', error)
+    }
+    return data
+  }
+
+  async getIdFromUsername(username: string) {
+    const { data, error } = await this.supabase.from('users').select('id').eq('username', username)
+    if (error) {
+      console.log('error', error)
+    }
+    return data
+  }
+
+  async createQuote(quote: any) {
+    const id = await this.getIdFromUsername(quote.username)
+    if (id) {
+      quote.said_by = id[0].id
+    } else {
+      console.log('error', 'User not found')
+      return
+    }
+    delete quote.username
+    const { data, error } = await this.supabase.from('quotes').insert(quote)
+    if (error) {
+      console.log('error', error)
+    }
+    return data
+  }
 }
