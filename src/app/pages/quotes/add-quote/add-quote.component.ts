@@ -30,11 +30,12 @@ export class AddQuoteComponent implements OnInit {
 
   onSubmit(): void {
     if (!this.quoteForm.invalid) {
+      this.quoteForm.value.date = new Date(this.quoteForm.value.date)
+      this.quoteForm.value.date.setHours(6, 0, 0, 0)
       this.supabaseService.createQuote(this.quoteForm.value);
     }
     // reload data
     this.dialogRef.close();
-
   }
 
   onCancel(): void {
